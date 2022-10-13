@@ -1,7 +1,12 @@
-html,
-body {
+* {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  
   background-color: #202020;
   height: 100%;
 }
@@ -9,10 +14,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 #root {
@@ -23,7 +24,7 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
+    color: rgb(218, 214, 214);
     background: #202020;
   }
 }
@@ -39,4 +40,12 @@ a {
 .page {
   height: 100%;
   width: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 800px;
+
+  font-size: 18px;
+  display: inline;
 }

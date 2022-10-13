@@ -9,3 +9,13 @@
     display: flex;
     gap: 8px;
   }
+
+    .footerText {
+      &:last-child {
+        text-decoration: underline;
+        color: rgb(184, 184, 184);
+      }
+      margin: 5px 0;
+      text-align: center;
+      font-size: 200;
+    }

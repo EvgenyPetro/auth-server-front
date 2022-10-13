@@ -1,15 +1,25 @@
 import styles from '../../../../styles/input.module.scss'
 
-const LoginPasswordField = ({id, label}) => {
+const LoginPasswordField = ({ register, error }) => {
     return (
         <div className={styles.inputContainer}>
             <div className={styles.inputContainerHeader}>
                 <div className={styles.inputLabel}>
-                    <label htmlFor={id}>{label}</label>
+                    <label htmlFor='password'>Password</label>
                 </div>
-                <div className={styles.inputError}>Error</div>
+                {error && <div className={styles.inputError}>{error.message}</div>}
             </div>
-            <input className={styles.inputField} id={id} type='password'></input>
+            <input {...register('password', {
+                required: 'Required',
+                maxLength: {
+                    value: 32,
+                    message: '32 Characters Max',
+                },
+                minLength: {
+                    value: 8,
+                    message: '8 Characters Min',
+                },
+            })} className={styles.inputField} id='password' type='password'></input>
         </div>
     );
 }

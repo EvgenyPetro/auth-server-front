@@ -1,8 +1,9 @@
 
 
- const Button = ({children, ...props}) => {
+ const Button = ({isValid, children, ...props}) => {
+
     return(
-  <button {...props}>{children}</button>
+  <button  {...props}>{children}</button>
   )
 };
 

@@ -5,17 +5,32 @@ import RegisterPasswordField from "./field/RegisterPasswordField"
 import formStyles from '../../../styles/forms.module.scss'
 import Button from '../../buttons/Button'
 import buttonStyles from '../../../styles/button.module.scss'
+import { Link } from "react-router-dom"
+import { useForm } from 'react-hook-form'
 
 const RegisterForm = () => {
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+        reset();
+    }
+
     return (
-        <form className={formStyles.registerLoginForm}>
+        <form onSubmit={handleSubmit(onSubmit)} className={formStyles.registerLoginForm}>
             <div className={formStyles.formNameContainer}>
-            <FirstNameField id='firsName' label='First Name'/>
-            <LastNameField id='lastName' label='Last Name'/>
+                <FirstNameField register={register} error={errors.firsName} />
+                <LastNameField register={register} error={errors.lastName} />
             </div>
-            <RegisterUsernameField id='username' label='Username'/>
-            <RegisterPasswordField id='password' label='Password'/>
+            <RegisterUsernameField register={register} error={errors.username} />
+            <RegisterPasswordField register={register} error={errors.password} />
             <Button className={buttonStyles.defaultButton}> Create Account</Button>
+            <div className={formStyles.footerText}>
+                <span>Alredy hawe an account? </span>
+                <Link to='/login'>
+                    <span>Login</span>
+                </Link>
+            </div>
         </form>
     )
 }
