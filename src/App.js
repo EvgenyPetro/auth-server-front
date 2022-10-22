@@ -1,23 +1,32 @@
-import { Route, Routes } from 'react-router-dom';
-import './index.scss'
-import RegisterPage from './pages/RegisterPage'
-import LoginPage from './pages/LoginPage'
-import NavBar from './pages/NavBar'
-import Home from './pages/Home'
-import SideBar from './components/sidebar/SideBar'
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
+import TopBar from "./pages/global/TopBar";
+import SideBar from "./pages/global/SideBar";
+import { Routes, Route } from "react-router-dom";
+import DashBoard from "./pages/dashboard/Dashboard";
+import RegisterForm from './components/form/registerForm/RegisterForm'
+import LoginForm from './components/form/loginForm/LoginForm'
+
 
 function App() {
+  const [theme, colorMode] = useMode();
   return (
-    <div className='container'>
-      <Routes>
-        <Route path="/" element={<SideBar />}>
-          
-          {/* <Route path=':home' element={<Home />} />
-          <Route path="/registration" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} /> */}
-        </Route>
-      </Routes>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="app">
+          <SideBar />
+          <main className="content">
+            <TopBar />
+            <Routes>
+              <Route path="/" element={<DashBoard />} />
+              <Route path="/signup" element={<RegisterForm />} />
+              <Route path="/login" element={<LoginForm />} />
+            </Routes>
+          </main>
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
