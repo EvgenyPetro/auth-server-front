@@ -2,21 +2,32 @@ import { Box, Typography } from "@mui/material";
 import Header from "../../headers/Header";
 import LoginUsernameField from "./field/LoginUsernameField";
 import LoginPasswordField from "./field/LoginPasswordField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { CustomButton } from "../../Button/CustomButton";
+import { loginUser } from "../../../Server/AuthUserServer";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
+
+  const onSubmit = async (data) => {
+    try {
+      await loginUser(data).then((res) => {
+        sessionStorage.setItem("refresh_token", res.data.refresh_token);
+        sessionStorage.setItem("access_token", res.data.access_token);
+      });
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <Box m="20px" height="90vh">
       <Header title="LOGIN USER" subTitle="Login to your profile" />

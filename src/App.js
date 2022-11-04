@@ -4,9 +4,9 @@ import TopBar from "./pages/global/TopBar";
 import SideBar from "./pages/global/SideBar";
 import { Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/dashboard/Dashboard";
-import RegisterForm from './components/form/registerForm/RegisterForm'
-import LoginForm from './components/form/loginForm/LoginForm'
-
+import RegisterForm from "./components/form/registerForm/RegisterForm";
+import LoginForm from "./components/form/loginForm/LoginForm";
+import AuthenticatedRoute from "./components/authenticatedRoute  /AuthenticatedRoute";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -19,9 +19,16 @@ function App() {
           <main className="content">
             <TopBar />
             <Routes>
-              <Route path="/" element={<DashBoard />} />
               <Route path="/signup" element={<RegisterForm />} />
               <Route path="/login" element={<LoginForm />} />
+              <Route
+                path="/"
+                element={
+                  <AuthenticatedRoute>
+                    <DashBoard />
+                  </AuthenticatedRoute>
+                }
+              />
             </Routes>
           </main>
         </div>
