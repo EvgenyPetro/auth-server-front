@@ -7,6 +7,7 @@ import DashBoard from "./pages/dashboard/Dashboard";
 import RegisterForm from "./components/form/registerForm/RegisterForm";
 import LoginForm from "./components/form/loginForm/LoginForm";
 import AuthenticatedRoute from "./components/authenticatedRoute  /AuthenticatedRoute";
+import ChatBoard from "./pages/ChatBoard/ChatBoard";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -26,6 +27,14 @@ function App() {
                 element={
                   <AuthenticatedRoute>
                     <DashBoard />
+                  </AuthenticatedRoute>
+                }
+              />
+              <Route
+                path="/chat"
+                element={
+                  <AuthenticatedRoute>
+                    <ChatBoard />
                   </AuthenticatedRoute>
                 }
               />

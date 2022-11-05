@@ -8,6 +8,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import HelpOutlinedIcon from "@mui/icons-material/HelpOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import "react-pro-sidebar/dist/css/styles.css";
 
 const SideBar = () => {
@@ -86,7 +87,7 @@ const SideBar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../../aseets/e1iSR90bPcI.jpeg`}
+                  src={`../../../aseets/1.jpeg`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -110,6 +111,13 @@ const SideBar = () => {
               title="Dashboard"
               to="/"
               icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Chat"
+              to="/chat"
+              icon={<ChatOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
