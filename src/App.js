@@ -7,7 +7,7 @@ import DashBoard from "./pages/dashboard/Dashboard";
 import RegisterForm from "./components/form/registerForm/RegisterForm";
 import LoginForm from "./components/form/loginForm/LoginForm";
 import AuthenticatedRoute from "./components/authenticatedRoute  /AuthenticatedRoute";
-import ChatBoard from "./pages/ChatBoard/ChatBoard";
+import ChatBoard from "./pages/chatBoard/ChatBoard";
 
 function App() {
   const [theme, colorMode] = useMode();
